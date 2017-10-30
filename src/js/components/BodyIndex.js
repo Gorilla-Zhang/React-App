@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import BodyChild from './bodychild'
+import MixinLog from './mixins'
+import ReactMixin from 'react-mixin'
 
 const defaultProps = {
   username: '这是一个默认的用户名'
@@ -24,6 +26,8 @@ export default class BodyIndex extends React.Component {
   //第二种方式
   console.log(this.refs.submitButton)
   this.refs.submitButton.style.color='red'
+
+   MixinLog.log()
   }
 
   handleChildValueChange(event) {
@@ -53,3 +57,4 @@ BodyIndex.propTypes = {
 
 BodyIndex.defaultProps = defaultProps
 
+ReactMixin(BodyIndex.prototype, MixinLog)
