@@ -3,3 +3,6 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.smallFontSize h1{
+  font-size: 12px;
+}
