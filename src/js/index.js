@@ -26,7 +26,7 @@ export default class Index extends React.Component {
     return (
       <div>
         <ComponentHeader/>
-        <BodyIndex userid={123456} username={"buck"}/>
+        <BodyIndex userid={123456} username={"parry"}/>
         <ComponentFooter/>
       </div>
     )

@@ -1,14 +1,24 @@
 import React from 'react'
-import BodyChild from './components/bodychild'
+import PropTypes from 'prop-types'
+import BodyChild from './bodychild'
+
+const defaultProps = {
+  username: '这是一个默认的用户名'
+}
 
 export default class BodyIndex extends React.Component {
   constructor() {
     super();//调用基类的所有的初始化方法
-    this.state = { username: "Parry",
-    age:20 }//初始化赋值
+    this.state = {
+      username: "Parry",
+      age: 20
+    }//初始化赋值
   }
-  changeUserInfo(){
-    this.setState({age:50})
+  changeUserInfo(age) {
+    this.setState({ age: age })
+  }
+  handleChildValueChange(event) {
+    this.setState({ age: event.target.value })
   }
   render() {
     // setTimeout(() => {
@@ -19,11 +29,18 @@ export default class BodyIndex extends React.Component {
     return (
       <div>
         <h2>页面的主题内容</h2>
-        <p>{this.props.userid} {this.props.username}</p>
+        <p>接收到的父页面的属性: userid: {this.props.userid} username: {this.props.username}</p>
         <p>age: {this.state.age}</p>
-        <input type="button" value="提交" onClick={this.changeUserInfo.bind(this)}/>
-        <BodyChild />
+        <input type="button" value="提交" onClick={this.changeUserInfo.bind(this,99)} />
+        <BodyChild {...this.props} id={4} handleChildValueChange={this.handleChildValueChange.bind(this)} />
       </div>
     )
   }
 }
+
+BodyIndex.propTypes = {
+  userid: PropTypes.number.isRequired
+}
+
+BodyIndex.defaultProps = defaultProps
+
