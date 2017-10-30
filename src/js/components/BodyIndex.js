@@ -1,32 +1,21 @@
 import React from 'react'
-
-export default class BodyIndex extends React.Component{
-
-  componentWillMount(){
-    //定义你的逻辑即可
-    console.log("BodyIndex - componentWillMount");
+export default class BodyIndex extends React.Component {
+  constructor() {
+    super();//调用基类的所有的初始化方法
+    this.state = { username: "Parry",
+    age:20 }//初始化赋值
   }
-  componentDidMount(){
-    console.log("BodyIndex - componentDidMount");
-  }
-  render(){
-
-    var userName = 'Parry'
-    var boolInput = false
-
-    var html = "IMOOC\u0020LESSON"
-
-    //comments
+  render() {
+    setTimeout(() => {
+      //更改state的时候
+      this.setState({ username: "IMOOC", age:3});
+    }, 4000)
 
     return (
       <div>
-        <h2>页面的主题内容</h2>  
-        <p>{userName==''?'用户还没有登录':'用户名'+userName}</p>
-        <p><input type="button" value='默认按钮' disabled={boolInput}/></p>
-        {/*注释*/}
-        <p>{html}</p>{/*需要进行Unicode的转码*/}
-        <p dangerouslySetInnerHTML ={{__html : html}}></p>
-      </div>  
+        <h2>页面的主题内容</h2>
+        <p>{this.state.username}{this.state.age}</p>
+      </div>
     )
   }
 }
