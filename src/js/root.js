@@ -11,9 +11,9 @@ export default class Root extends React.Component{
       //替换之前的index,变成程序的入口
       <Router history = {hashHistory}>
         <Route component={Index} path="/">
-        <Route component={ComponentDetails} path="details"></Route>
+        <Route component={ComponentDetails} path="/details"></Route>
         </Route>
-        <Route component={ComponentList} path="list"></Route>
+        <Route component={ComponentList} path="/list"></Route>
       </Router>
     )
   }
