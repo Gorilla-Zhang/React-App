@@ -1,16 +1,17 @@
 import ComponentHeader from './components/header'
 import ComponentFooter from './components/footer'
 import BodyIndex from './components/BodyIndex'
+import 'antd/dist/antd.css'
 var React = require('react')
 var ReactDOM = require('react-dom')
 
 export default class Index extends React.Component {
 
-  componentWillMount(){
+  componentWillMount() {
     //定义你的逻辑即可
     console.log("Index - componentWillMount");
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log("Index - componentDidMount");
   }
 
@@ -25,12 +26,13 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        <ComponentHeader/>
-        <BodyIndex userid={123456} username={"parry"}/>
-        <ComponentFooter/>
+        <ComponentHeader />
+        <BodyIndex userid={123456} username={"parry"} />
+        <div>
+          {this.props.children}
+        </div>
+        <ComponentFooter />
       </div>
     )
   }
 }
-
-// ReactDOM.render(<Index/>,document.getElementById(''))

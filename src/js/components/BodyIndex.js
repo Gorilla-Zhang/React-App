@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import BodyChild from './bodychild'
 import MixinLog from './mixins'
 import ReactMixin from 'react-mixin'
+import { Input } from 'antd'
 
 const defaultProps = {
   username: '这是一个默认的用户名'
@@ -19,15 +20,15 @@ export default class BodyIndex extends React.Component {
   }
   changeUserInfo(age) {
     this.setState({ age: age })
-  //第一种方式
-  // var mySubmitButton = document.getElementById('submitButton')
-  // ReactDOM.findDOMNode(mySubmitButton).style.color = 'red'
-  
-  //第二种方式
-  console.log(this.refs.submitButton)
-  this.refs.submitButton.style.color='red'
+    //第一种方式
+    // var mySubmitButton = document.getElementById('submitButton')
+    // ReactDOM.findDOMNode(mySubmitButton).style.color = 'red'
 
-   MixinLog.log()
+    //第二种方式
+    console.log(this.refs.submitButton)
+    this.refs.submitButton.style.color = 'red'
+
+    MixinLog.log()
   }
 
   handleChildValueChange(event) {
@@ -44,12 +45,14 @@ export default class BodyIndex extends React.Component {
         <h2>页面的主题内容</h2>
         <p>接收到的父页面的属性: userid: {this.props.userid} username: {this.props.username}</p>
         <p>age: {this.state.age}</p>
-        <input id="submitButton" ref="submitButton" type="button" value="提交" onClick={this.changeUserInfo.bind(this,99)} />
+        <Input placeholder="Basic usage" />
+        <input id="submitButton" ref="submitButton" type="button" value="提交" onClick={this.changeUserInfo.bind(this, 99)} />
         <BodyChild {...this.props} id={4} handleChildValueChange={this.handleChildValueChange.bind(this)} />
       </div>
     )
   }
 }
+
 
 BodyIndex.propTypes = {
   userid: PropTypes.number.isRequired
