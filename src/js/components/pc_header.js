@@ -19,6 +19,15 @@ class PCHeader extends React.Component {
     }
   }
 
+  ComponentWillMount(){
+    if(localStorage.userid!=''){
+      this.setState({hasLogined:true})
+      this.setState({userNickName:localStorage.userNickName,userid:localStorage.userid})
+
+    }
+   
+  }
+
   setModalVisible(value) {
     this.setState({ modalVisible: value })
   }
@@ -33,6 +42,7 @@ class PCHeader extends React.Component {
       }
     }
   }
+
   handleSubmit(e) {
     //页面开始向API提交数据
     e.preventDefault();
@@ -44,6 +54,8 @@ class PCHeader extends React.Component {
     // fetch("")
     // then(response=>response.json()).then(json=>{
     //   this.setState({userNickName:json.NickUserName,userid:json.userid})
+    // localStorage.userid=json.UserId;
+    // localStorage.userNickName=json.NickUserName;
     // })
     // if(this.state.action=="login"){
     //      this.setState({hasLogin:true})
@@ -59,6 +71,11 @@ class PCHeader extends React.Component {
       this.setState({ action: 'register' })
     }
   }
+  logout(){
+    localStorage.userid=''
+    localStorage.userNickName='Json.NickUserName'
+    this.setState({hasLogined:false})
+  }
   render() {
     let { getFieldDecorator } = this.props.form
     const userShow = this.state.hasLogined
@@ -71,7 +88,7 @@ class PCHeader extends React.Component {
         </link>
         &nbsp;&nbsp;
     <link target="_blank">
-          <Button type="ghost" htmlType="button">退出</Button>
+          <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
         </link>
       </Menu.Item>
       :
