@@ -23,7 +23,7 @@ class PCHeader extends React.Component {
     this.setState({ modalVisible: value })
   }
   handleClick(e) {
-    console.log(e.key,'ss')
+    console.log(e.key, 'ss')
     if (e.key === "register") {
       this.setState({ current: 'register' })
       this.setModalVisible(true)
@@ -35,10 +35,32 @@ class PCHeader extends React.Component {
   }
   handleSubmit(e) {
     //页面开始向API提交数据
+    e.preventDefault();
+    var myFetchOptions = {
+      method: 'GET'
+    }
+    // var formData = this.props.form.getFieldValue()
+    // console.log(formData)
+    // fetch("")
+    // then(response=>response.json()).then(json=>{
+    //   this.setState({userNickName:json.NickUserName,userid:json.userid})
+    // })
+    // if(this.state.action=="login"){
+    //      this.setState({hasLogin:true})
+    // }
+    // message.success("请求成功！")
+    // this.setModalVisible(false)
   }
-
+  callback(key) {
+    if (key == 1) {
+      this.setState({ action: 'login' })
+    }
+    else if (key == 2) {
+      this.setState({ action: 'register' })
+    }
+  }
   render() {
-    let { getFieldProps } = this.props.form
+    let { getFieldDecorator } = this.props.form
     const userShow = this.state.hasLogined
       ?
       <Menu.Item key="logout" class="register">
@@ -85,7 +107,7 @@ class PCHeader extends React.Component {
               <Menu.Item key="yule">
                 <Icon type="appstore" />娱乐
            </Menu.Item>
-              <Menu.Item key="top">
+              <Menu.Item key="tiyu">
                 <Icon type="appstore" />体育
            </Menu.Item>
               <Menu.Item key="keji">
@@ -99,21 +121,35 @@ class PCHeader extends React.Component {
             <Modal title="用户中心" wrapClassName="vertical-cneter-modal" visible={this.state.modalVisible}
               onCancel={() => this.setModalVisible(false)}
               onOk={() => this.setModalVisible(false)} okText="关闭">
-              <Tabs type="card">
+              <Tabs type="card" onchange={this.callback.bind(this)}>
+
+                <TabPane tab="登录" key="1">
+                  <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                    <FormItem label="账户">
+                      <Input placeholder="请输入您的账号"{...getFieldDecorator('userName') } />
+                    </FormItem>
+                    <FormItem label="密码">
+                      <Input type="password" placeholder="请输入您的密码"{...getFieldDecorator('password') } />
+                    </FormItem>
+                    <Button type="primary" htmlType="submit">登录</Button>
+                  </Form>
+                </TabPane>
+
                 <TabPane tab="注册" key="2">
                   <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                     <FormItem label="账户">
-                      <Input placeholder="请输入您的账号"{...getFieldProps('r_userName') } />
+                      <Input placeholder="请输入您的账号"{...getFieldDecorator('r_userName') } />
                     </FormItem>
                     <FormItem label="密码">
-                      <Input type="password" placeholder="请输入您的密码"{...getFieldProps('r_password') } />
+                      <Input type="password" placeholder="请输入您的密码"{...getFieldDecorator('r_password') } />
                     </FormItem>
                     <FormItem label="确认密码">
-                      <Input type="password" placeholder="请再次输入您的密码"{...getFieldProps('r_confirmpassword') } />
+                      <Input type="password" placeholder="请再次输入您的密码"{...getFieldDecorator('r_confirmpassword') } />
                     </FormItem>
                     <Button type="primary" htmlType="submit">注册</Button>
                   </Form>
                 </TabPane>
+
               </Tabs>
             </Modal>
           </Col>
