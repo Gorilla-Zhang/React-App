@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'antd'
 import { Tabs, Carousel } from 'antd'
+import PCNewsBlock from './pc_news_block'
 const TabPane = Tabs.TabPane
 export default class PCNewsContainer extends React.Component {
   render() {
@@ -17,8 +18,8 @@ export default class PCNewsContainer extends React.Component {
         <Row>
           <Col span={2}></Col>
           <Col span={20} className="container" style={{ paddingTop: 10 }}>
-            <div className="leftContainer" style={{ width: 400, height: 300, float: 'left' }}>
-              <div className="carousel" style={{ width: 400, height: 300, float: 'left' }}>
+            <div className="leftContainer" style={{ width: 400, height: 200, float: 'left' }}>
+              <div className="carousel" style={{ width: 400, height: 200, float: 'left' }}>
                 <Carousel {...settings}>
                   <div><img src={require("../../images/1.png")} /></div>
                   <div><img src={require("../../images/2.png")} /></div>
@@ -27,6 +28,11 @@ export default class PCNewsContainer extends React.Component {
                 </Carousel>
               </div>
             </div>
+            <Tabs className="tab_news">
+              <TabPane tab="新闻" key="1">
+                <PCNewsBlock count={22} type="top" width="100%" bordered="false" />
+              </TabPane>
+            </Tabs>
           </Col>
           <Col span={2}></Col>
         </Row>
