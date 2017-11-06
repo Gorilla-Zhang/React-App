@@ -37,7 +37,7 @@ export default class PCNewsBlock extends React.Component {
       <div className="topNewsList">
         <Card>
           <ul>
-
+            {/* {newsList} */}
           </ul>
         </Card>
       </div>
