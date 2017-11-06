@@ -9,8 +9,8 @@ export default class Index extends React.Component {
     return (
       <div>
         <PCHeader />
-        <PCFooter />
         <PCNewsContainer />
+        <PCFooter />
       </div>
     )
   }
