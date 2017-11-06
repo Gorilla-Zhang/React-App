@@ -29,7 +29,7 @@ export default class PCNewsContainer extends React.Component {
                   <div><img src={require("../../images/4.png")} style={{ width: 400, height: 300 }} /></div>
                 </Carousel>
               </div>
-              <PCNewsImageBlock count={6} type="guoji" width="400px" cartTitle="国际头条" imageWidth="112" px />
+              <PCNewsImageBlock count={6} type="guoji" width="400px" cartTitle="国际头条" imageWidth="112px"/>
             </div>
             <Tabs className="tab_news">
               <TabPane tab="头条" key="1">
@@ -40,8 +40,8 @@ export default class PCNewsContainer extends React.Component {
               </TabPane>
             </Tabs>
             <div>
-              <PCNewsImageBlock count={8} type="guonei" width="100%" cartTitle="国内新闻" imageWidth="132" px />
-              <PCNewsImageBlock count={16} type="yule" width="100%" cartTitle="娱乐新闻" imageWidth="132" px />
+              <PCNewsImageBlock count={8} type="guonei" width="100%" cartTitle="国内新闻" imageWidth="132px"  />
+              <PCNewsImageBlock count={16} type="yule" width="100%" cartTitle="娱乐新闻" imageWidth="132px"  />
             </div>
           </Col>
           <Col span={2}></Col>
