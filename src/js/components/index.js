@@ -4,13 +4,14 @@ import PCFooter from './pc_footer'
 import PCNewsContainer from './pc_newscontainer'
 
 
-export default class Index extends React.Component{
-  render(){
-    return(
+export default class Index extends React.Component {
+  render() {
+    return (
       <div>
-    <PCHeader/>
-    <PCFooter/>
-    </div>
+        <PCHeader />
+        <PCFooter />
+        <PCNewsContainer />
+      </div>
     )
   }
 }
